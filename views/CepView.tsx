@@ -21,7 +21,7 @@ export function CepView() {
     setAddress(null);
 
     if (cep.length !== 8) {
-      setError('CEP inválido. Deve conter 8 dígitos.');
+      setError('CEP inválido. O CEP deve conter 8 dígitos.');
       return;
     }
 
@@ -44,7 +44,7 @@ export function CepView() {
 
       <TextInput
         style={styles.input}
-        placeholder="Digite o seu CEP"
+        placeholder="Digite o seu CEP, ex: 01001000"
         keyboardType="numeric"
         value={cep}
         onChangeText={setCep}
@@ -55,14 +55,12 @@ export function CepView() {
       {error ? <Text style={styles.error}>{error}</Text> : null}
 
       {address && (
-
         <View style={styles.result}>
           <Text>Cidade: {address.localidade} - {address.uf}</Text>
           <Text>Região do Brasil: {address.regiao}</Text>
           <Text>Bairro: {address.bairro}</Text>
           <Text>Logradouro: {address.logradouro}</Text>
         </View>
-
       )}
 
     </View>
@@ -89,6 +87,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     paddingHorizontal: 10,
     marginBottom: 10,
+    borderRadius: 8
   },
   error: {
     color: 'red',
@@ -96,6 +95,5 @@ const styles = StyleSheet.create({
   },
   result: {
     marginTop: 20,
-    alignItems: 'center',
   },
 });
